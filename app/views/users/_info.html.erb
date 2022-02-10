@@ -8,8 +8,20 @@
 	  <th>introduction</th>
 	  <th><%= user.introduction %></th>
   </tr>
+  <tr>
+    <th>follows</th>
+    <!--<th><%#= user.followings.count %></th>-->
+    <th><%= link_to user.active_relationship.count, user_relationship_following_path(user) %></th>
+  </tr>
+  <tr>
+    <th>followers</th>
+    <!--<th><%#= user.followers.count %></th>-->
+    <th><%= link_to user.passive_relationship.count, user_relationship_followed_path(user) %></th>
+  </tr>
+  <!--<td><%#= "フォロー数: #{user.active_relationship.count}" %></td>-->
+  <!--<td><%#= "フォロワー数: #{user.passive_relationship.count}" %></td>-->
 </table>
-　
+
 <div class='row'>
   <%= link_to edit_user_path(user), class: "btn btn-outline-secondary btn-block edit_user_#{user.id}" do %>
     <i class="fas fa-user-cog"></i>

@@ -10,6 +10,11 @@ class UsersController < ApplicationController
   def index
     @users = User.all
     @book = Book.new
+    # フォロワー機能追記
+    #@follow = User.find(:followed_id, :user_id)
+    #@unfollow = User.find(:followed_id, :user_id)
+    @follower = current_user.followers
+    @followed = current_user.followings
   end
 
   def edit

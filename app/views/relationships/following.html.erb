@@ -1,0 +1,24 @@
+ <div class='col-md-8 offset-md-1'>
+ <h2>Follow Users</h2>
+ <table class='table'>
+    <thead>
+      <tr>
+        <th>image</th>
+        <th>name</th>
+        <th colspan="3"></th>
+      </tr>
+    </thead>
+      <tbody>
+        <% @users.each do |user| %>
+          <tr>
+            <td><%= image_tag user.get_profile_image, size: '50x50' %></td>
+            <td><%= user.name %></td>
+            <!--ここからフォロー機能追記-->
+            <td><%= "フォロー数: #{user.active_relationship.count}" %></td>
+            <td><%= "フォロワー数: #{user.passive_relationship.count}" %></td>
+            <td><%= link_to 'Show',user_path(user.id) %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+ </div>
