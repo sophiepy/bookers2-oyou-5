@@ -5,11 +5,11 @@ Rails.application.routes.draw do
   devise_for :users
   root :to =>"homes#top"
   get "home/about"=>"homes#about"
+  # 検索機能
+  get "search/search" => "searches#search"
+  # get "search/search" => "searches#search"
 # フォロー機能追記do end 他OR users do からendend
   resources :users, only: [:index,:show,:edit,:update]do
-    # member do
-      # get :following, :followers
-    # end
     resource :relationships, only: [:create,:destroy,:following, :followers]
     get "relationship/following" => "relationships#following"
     get "relationship/followed" => "relationships#followed"
